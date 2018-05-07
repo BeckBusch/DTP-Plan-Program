@@ -1,0 +1,7 @@
+C:\Users\beckb\Documents\GitHub\DTP-Plan-Program\02DTP-PlanProgram\obj\Debug\02DTP-PlanProgram.csprojResolveAssemblyReference.cache
+C:\Users\beckb\Documents\GitHub\DTP-Plan-Program\02DTP-PlanProgram\obj\Debug\02DTP-PlanProgram.csproj.CoreCompileInputs.cache
+C:\Users\beckb\Documents\GitHub\DTP-Plan-Program\02DTP-PlanProgram\bin\Debug\02DTP-PlanProgram.exe.config
+C:\Users\beckb\Documents\GitHub\DTP-Plan-Program\02DTP-PlanProgram\bin\Debug\02DTP-PlanProgram.exe
+C:\Users\beckb\Documents\GitHub\DTP-Plan-Program\02DTP-PlanProgram\bin\Debug\02DTP-PlanProgram.pdb
+C:\Users\beckb\Documents\GitHub\DTP-Plan-Program\02DTP-PlanProgram\obj\Debug\02DTP-PlanProgram.exe
+C:\Users\beckb\Documents\GitHub\DTP-Plan-Program\02DTP-PlanProgram\obj\Debug\02DTP-PlanProgram.pdb
