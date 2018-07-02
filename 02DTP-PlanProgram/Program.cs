@@ -12,6 +12,7 @@ namespace _02DTP_PlanProgram
 		static void PizzaColor(string name)
 		{
 		}
+
 		//method to handle user inputs where there are two options
 		static Boolean Choice(string choice1, string choice2)
 		{
@@ -35,24 +36,34 @@ namespace _02DTP_PlanProgram
 				}
 			}
 		}
+
 		//pizzas stored in array
-		static readonly string[] Pizzas = { "Meatlovers", "Ham & Cheese", "Hawaiian", "Garlic", "Pepperoni", "Cheese", "Double Cheese", "Chicken", "Mexican", "Sea Food", "Margarita", "Thai Curry"};
+		static readonly string[] Pizzas =
+		{
+			"Meatlovers", "Ham & Cheese", "Hawaiian", "Garlic", "Pepperoni", "Cheese", "Double Cheese", "Chicken",
+			"Mexican", "Sea Food", "Margarita", "Thai Curry"
+		};
+
 		//initialise varables, allowing them to be changed within local scopes 
 		private static int pizzaCount;
 		private static int phone;
 		public static Int64 big = 9999999999;
 		public static string phoneStr;
 		public static int selection;
+		public static double Total;
 
 		static void Main(string[] args)
 		{
 			//uses method to ask user questons with only two options
-			if(Choice("Pickup", "Delivery") == true) {
+			if (Choice("Pickup", "Delivery") == true)
+			{
 				//if customer is picking up, only ask for name
 				Console.Write("Please input customer Name  :");
 				String name = Console.ReadLine();
 			}
-			else {
+			else
+			{
+				Total = 3;
 				//if customer is having pizza delivered, ask for name, address and phone number
 				//name and address are both strings, so they can accept any input
 				Console.Write("Please input customer Name  :");
@@ -60,7 +71,8 @@ namespace _02DTP_PlanProgram
 				Console.Write("Please input customer Address  :");
 				String address = Console.ReadLine();
 
-				while(true) {
+				while (true)
+				{
 					Console.Write("Please input customer Phone Number  :");
 					//the phone number is a number, so we need to check that it not a string
 					try
@@ -78,7 +90,9 @@ namespace _02DTP_PlanProgram
 					{
 						Console.WriteLine("Please enter a valid Phone Number.");
 					}
-					if((phone < 0) || (phone > big)) {
+
+					if ((phone < 0) || (phone > big))
+					{
 						Console.WriteLine("Please enter a valid Phone Number.");
 					}
 				}
@@ -116,23 +130,28 @@ namespace _02DTP_PlanProgram
 				Console.WriteLine(count < 8 ? "   $8.50" : "   $13.50");
 				count++;
 			}
+
 			Console.ResetColor();
 			Console.WriteLine();
 			Console.WriteLine("Which Pizzas do you want? Use the numbers next to them.");
 			Int32[] PizzaSelection = new Int32[pizzaCount];
 
-			for(int i = 0; i < pizzaCount; i++) {
-				while(true)
+			for (int i = 0; i < pizzaCount; i++)
+			{
+				while (true)
 				{
 					Console.Write("Pizza number " + Convert.ToString(i + 1) + ":   ");
-					try {
+					try
+					{
 						selection = Convert.ToInt32(Console.ReadLine());
 					}
-					catch(System.FormatException) {
+					catch (System.FormatException)
+					{
 						Console.WriteLine("Please enter a Pizza	number");
 						continue;
 					}
-					catch(System.OverflowException) {
+					catch (System.OverflowException)
+					{
 						Console.WriteLine("Please enter a Pizza	number");
 						continue;
 					}
@@ -146,13 +165,16 @@ namespace _02DTP_PlanProgram
 
 				}
 			}
+
 			//order summary
 			Console.WriteLine();
 			Console.WriteLine("##### Order Summary #####");
-			for(int i = 0; i < pizzaCount; i++) {
-				Console.WriteLine(Pizzas[PizzaSelection[i]]);
+			for (int i = 0; i < pizzaCount; i++)
+			{
+				Console.Write(Pizzas[PizzaSelection[i]]);
+				Console.WriteLine(PizzaSelection[i] < 7 ? "   $8.50" : "   $13.50");
+				Total += PizzaSelection[i] < 7 ? 8.50 : 13.50;
 			}
-
 		}
 	}
 }
