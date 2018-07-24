@@ -159,6 +159,20 @@ namespace _02DTP_PlanProgram
 
 			Console.Write("Total Cost:  ");
 			Console.WriteLine(Convert.ToString(Total));
+			if(Deliver == true) {
+				Console.WriteLine("Including delivery cost of $3.00");
+				Console.WriteLine();
+				Console.Write("Name: ");
+				Console.WriteLine(name);
+				Console.Write("Address: ");
+				Console.WriteLine(address);
+				Console.Write("Phone Number: ");
+				Console.WriteLine(PhoneStr);
+			}
+			else {
+				Console.WriteLine();
+				Console.WriteLine(name);
+			}
 		}
 	}
 }
