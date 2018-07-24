@@ -141,15 +141,24 @@ namespace _02DTP_PlanProgram
 						Console.WriteLine("Please enter a Pizza	number");
 						continue;
 					}
-
 					if((Selection > 0) && (Selection < 13)) {
 						int id = Selection - 1;
 						PizzaSelection[i] = id;
 						break;
 					}
-
 				}
 			}
+			//order summary
+			Console.WriteLine();
+			Console.WriteLine("##### Order Summary #####");
+			for(int i = 0; i < PizzaCount; i++) {
+				Console.Write(Pizzas[PizzaSelection[i]]);
+				Console.WriteLine(PizzaSelection[i] < 7 ? "   $8.50" : "   $13.50");
+				Total += PizzaSelection[i] < 7 ? 8.50 : 13.50;
+			}
+
+			Console.Write("Total Cost:  ");
+			Console.WriteLine(Convert.ToString(Total));
 		}
 	}
 }
