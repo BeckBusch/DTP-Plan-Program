@@ -8,6 +8,9 @@ namespace _02DTP_PlanProgram
 {
 	class Program
 	{
+		//blank method setup to color the console output
+		static void PizzaColor(string name) {
+		}
 		//method to handle user inputs where there are two options
 		static Boolean Choice(string choice1, string choice2) {
 			//constant loop means that questions will keep being asked untill user enters valid answers
@@ -111,6 +114,7 @@ namespace _02DTP_PlanProgram
 			//created a counter to manage the prices
 			Int32 count = 1;
 			foreach(var t in Pizzas) {
+				PizzaColor(t);
 				Console.Write(Convert.ToString(count));
 				Console.Write(":  ");
 				Console.Write(t);
@@ -118,6 +122,34 @@ namespace _02DTP_PlanProgram
 				count++;
 			}
 
+			Console.ResetColor();
+			Console.WriteLine();
+			Console.WriteLine("Which Pizzas do you want? Use the numbers next to them.");
+			Int32[] PizzaSelection = new Int32[PizzaCount];
+
+			for(int i = 0; i < PizzaCount; i++) {
+				while(true) {
+					Console.Write("Pizza number " + Convert.ToString(i + 1) + ":   ");
+					try {
+						Selection = Convert.ToInt32(Console.ReadLine());
+					}
+					catch(System.FormatException) {
+						Console.WriteLine("Please enter a Pizza	number");
+						continue;
+					}
+					catch(System.OverflowException) {
+						Console.WriteLine("Please enter a Pizza	number");
+						continue;
+					}
+
+					if((Selection > 0) && (Selection < 13)) {
+						int id = Selection - 1;
+						PizzaSelection[i] = id;
+						break;
+					}
+
+				}
+			}
 		}
 	}
 }
