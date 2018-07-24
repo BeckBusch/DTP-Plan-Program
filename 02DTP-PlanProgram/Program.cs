@@ -27,6 +27,15 @@ namespace _02DTP_PlanProgram
 				}
 			}
 		}
+		//pizza menu stored in array
+		static readonly string[] Pizzas =
+		{
+			"Meatlovers", "Ham & Cheese", "Hawaiian", "Garlic", "Pepperoni", "Cheese", "Double Cheese", "Chicken",
+			"Mexican", "Sea Food", "Margarita", "Thai Curry"
+		};
+
+		//initialise varables
+		public static int Selection;
 		public static double Total;
 		public static bool Deliver = false;
 		public static string name;
@@ -99,6 +108,16 @@ namespace _02DTP_PlanProgram
 					//the lack of a break statment means that the code will keep looping in the case on an invalid input
 				}
 			}
+			//created a counter to manage the prices
+			Int32 count = 1;
+			foreach(var t in Pizzas) {
+				Console.Write(Convert.ToString(count));
+				Console.Write(":  ");
+				Console.Write(t);
+				Console.WriteLine(count < 8 ? "   $8.50" : "   $13.50");
+				count++;
+			}
+
 		}
 	}
 }
