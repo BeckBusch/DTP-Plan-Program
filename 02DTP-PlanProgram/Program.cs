@@ -34,6 +34,7 @@ namespace _02DTP_PlanProgram
 		public static int Phone;
 		public static Int64 Big = 9999999999;
 		public static string PhoneStr;
+		public static int PizzaCount;
 
 		static void Main(string[] args)
 		{
@@ -77,6 +78,25 @@ namespace _02DTP_PlanProgram
 					if((Phone < 0) || (Phone > Big)) {
 						Console.WriteLine("Please enter a valid Phone Number.");
 					}
+				}
+			}
+			//loop allows the try;catch statment to repeat untill everything is correct
+			while(true) {
+				try {
+					Console.Write("How many pizzas to be ordered? Maximum of five!  :");
+					//by converting the input to an integer straight away, 
+					//we can use the catch statment to remove the need for any further error checking
+					PizzaCount = Convert.ToInt32(Console.ReadLine());
+					if(PizzaCount > 5 || PizzaCount < 1) {
+						throw new System.FormatException();
+					}
+
+					//break leaves the loop
+					break;
+				}
+				catch(System.FormatException) {
+					Console.WriteLine("Must enter a number between 1 and 5");
+					//the lack of a break statment means that the code will keep looping in the case on an invalid input
 				}
 			}
 		}
