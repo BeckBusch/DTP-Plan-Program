@@ -8,6 +8,25 @@ namespace _02DTP_PlanProgram
 {
 	class Program
 	{
+		//method to handle user inputs where there are two options
+		static Boolean Choice(string choice1, string choice2) {
+			//constant loop means that questions will keep being asked untill user enters valid answers
+			while(true) {
+				//use options given via arguments to prestne user with question and choices, as well as insturctions on how to enter their answer
+				Console.WriteLine(choice1 + " or " + choice2 + "?");
+				Console.Write("1 for " + choice1 + ", 2 for " + choice2 + "     Input:");
+				string answerTemp = Console.ReadLine();
+				//if statment checks user answer, and gives user conformation of answer, before returning outcome to main program
+				if(answerTemp == "1") {
+					Console.WriteLine("You have chosen " + choice1);
+					return true;
+				}
+				else if(answerTemp == "2") {
+					Console.WriteLine("You have chosen " + choice2);
+					return false;
+				}
+			}
+		}
 		public static double Total;
 		public static bool Deliver = false;
 		public static string name;
@@ -20,7 +39,7 @@ namespace _02DTP_PlanProgram
 		{
 		
 			//uses method to ask user questons with only two options
-			if() {
+			if(Choice("Pickup", "Delivery") == true) {
 				//if customer is picking up, only ask for name
 				Console.Write("Please input customer Name  :");
 				name = Console.ReadLine();
