@@ -50,14 +50,17 @@ namespace _02DTP_PlanProgram
 
 		static void Main(string[] args)
 		{
-		
+			//while loop to repeat the entire program if the user wants to order again
+			while(true) {
 			//uses method to ask user questons with only two options
-			if(Choice("Pickup", "Delivery") == true) {
+			if (Choice("Pickup", "Delivery") == true)
+			{
 				//if customer is picking up, only ask for name
 				Console.Write("Please input customer Name  :");
 				name = Console.ReadLine();
 			}
-			else {
+			else
+			{
 				//start the total cost out as 3, which is the delivery cost
 				Total = 3;
 				Deliver = true;
@@ -68,52 +71,65 @@ namespace _02DTP_PlanProgram
 				Console.Write("Please input customer Address  :");
 				address = Console.ReadLine();
 				//continous loop that is ended via 'break' rather than the condition being false
-				while(true) {
+				while (true)
+				{
 					Console.Write("Please input customer Phone Number  :");
 					//the phone number is a number, so we need to check that it not a string
-					try {
+					try
+					{
 						PhoneStr = Console.ReadLine();
 						Phone = Convert.ToInt32(PhoneStr);
 						break;
 					}
 					//make sure that the phone number entered was not a string
-					catch(System.FormatException) {
+					catch (System.FormatException)
+					{
 						Console.WriteLine("Must enter a number");
 						continue;
 					}
 					//make sure that the phone number entered was not so large that it causes an overflow
-					catch(System.OverflowException) {
+					catch (System.OverflowException)
+					{
 						Console.WriteLine("Please enter a valid Phone Number.");
 					}
+
 					//make sure that the phone number is not larger the longest phone number
 					//this is different from the overflow code above as this code could not run if the nuber was so big as to cause an overflow
-					if((Phone < 0) || (Phone > Big)) {
+					if ((Phone < 0) || (Phone > Big))
+					{
 						Console.WriteLine("Please enter a valid Phone Number.");
 					}
 				}
 			}
+
 			//loop allows the try;catch statment to repeat untill everything is correct
-			while(true) {
-				try {
+			while (true)
+			{
+				try
+				{
 					Console.Write("How many pizzas to be ordered? Maximum of five!  :");
 					//by converting the input to an integer straight away, 
 					//we can use the catch statment to remove the need for any further error checking
 					PizzaCount = Convert.ToInt32(Console.ReadLine());
-					if(PizzaCount > 5 || PizzaCount < 1) {
+					if (PizzaCount > 5 || PizzaCount < 1)
+					{
 						throw new System.FormatException();
 					}
 
 					//break leaves the loop
 					break;
 				}
-				catch(System.FormatException) {
+				catch (System.FormatException)
+				{
 					Console.WriteLine("Must enter a number between 1 and 5");
 					//the lack of a break statment means that the code will keep looping in the case on an invalid input
 				}
 			}
+
 			//created a counter to manage the prices
 			Int32 count = 1;
-			foreach(var t in Pizzas) {
+			foreach (var t in Pizzas)
+			{
 				PizzaColor(t);
 				Console.Write(Convert.ToString(count));
 				Console.Write(":  ");
@@ -127,31 +143,40 @@ namespace _02DTP_PlanProgram
 			Console.WriteLine("Which Pizzas do you want? Use the numbers next to them.");
 			Int32[] PizzaSelection = new Int32[PizzaCount];
 
-			for(int i = 0; i < PizzaCount; i++) {
-				while(true) {
+			for (int i = 0; i < PizzaCount; i++)
+			{
+				while (true)
+				{
 					Console.Write("Pizza number " + Convert.ToString(i + 1) + ":   ");
-					try {
+					try
+					{
 						Selection = Convert.ToInt32(Console.ReadLine());
 					}
-					catch(System.FormatException) {
+					catch (System.FormatException)
+					{
 						Console.WriteLine("Please enter a Pizza	number");
 						continue;
 					}
-					catch(System.OverflowException) {
+					catch (System.OverflowException)
+					{
 						Console.WriteLine("Please enter a Pizza	number");
 						continue;
 					}
-					if((Selection > 0) && (Selection < 13)) {
+
+					if ((Selection > 0) && (Selection < 13))
+					{
 						int id = Selection - 1;
 						PizzaSelection[i] = id;
 						break;
 					}
 				}
 			}
+
 			//order summary
 			Console.WriteLine();
 			Console.WriteLine("##### Order Summary #####");
-			for(int i = 0; i < PizzaCount; i++) {
+			for (int i = 0; i < PizzaCount; i++)
+			{
 				Console.Write(Pizzas[PizzaSelection[i]]);
 				Console.WriteLine(PizzaSelection[i] < 7 ? "   $8.50" : "   $13.50");
 				Total += PizzaSelection[i] < 7 ? 8.50 : 13.50;
@@ -159,7 +184,8 @@ namespace _02DTP_PlanProgram
 
 			Console.Write("Total Cost:  ");
 			Console.WriteLine(Convert.ToString(Total));
-			if(Deliver == true) {
+			if (Deliver == true)
+			{
 				Console.WriteLine("Including delivery cost of $3.00");
 				Console.WriteLine();
 				Console.Write("Name: ");
@@ -169,10 +195,17 @@ namespace _02DTP_PlanProgram
 				Console.Write("Phone Number: ");
 				Console.WriteLine(PhoneStr);
 			}
-			else {
+			else
+			{
 				Console.WriteLine();
 				Console.WriteLine(name);
 			}
+
+			if (Choice("Order Again", "Close Program") == false)
+			{
+				break;
+			}
 		}
+	}
 	}
 }
